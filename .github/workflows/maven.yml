@@ -23,6 +23,11 @@ jobs:
       matrix:
         java-version: [ 17 ]
 
+    env:
+      DB_DATABASE: hivedb
+      DB_USER: root
+      DB_PASSWORD: @Gurudesigner1
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK ${{ matrix.java-version }}
