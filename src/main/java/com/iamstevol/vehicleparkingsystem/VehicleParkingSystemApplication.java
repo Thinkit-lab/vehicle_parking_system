@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VehicleParkingSystemApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(VehicleParkingSystemApplication.class, args);
     }
-
 }

@@ -3,10 +3,15 @@ package com.iamstevol.vehicleparkingsystem.controller;
 import com.iamstevol.vehicleparkingsystem.dto.request.VehicleRequest;
 import com.iamstevol.vehicleparkingsystem.dto.response.VehicleResponse;
 import com.iamstevol.vehicleparkingsystem.service.VehicleService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +29,10 @@ public class VehicleController {
     }
 
     @PostMapping("/")
+    @Operation(summary = "Add new vehicle", responses = {
+            @ApiResponse(responseCode = "200",
+                    content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ResponseEntity.class)))})
     public ResponseEntity<?> addVehicle(@RequestBody VehicleRequest vehicleRequest) {
         log.info("Inside addVehicle of VehicleController");
         VehicleResponse response = vehicleService.addVehicle(vehicleRequest);
@@ -32,6 +41,10 @@ public class VehicleController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a vehicle by Id", responses = {
+            @ApiResponse(responseCode = "200",
+                    content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ResponseEntity.class)))})
     public ResponseEntity<?> getVehicle(@PathVariable("id") String vehicleId) {
         log.info("Inside getVehicle of VehicleController");
         VehicleRequest response = vehicleService.getVehicle(vehicleId);
@@ -40,6 +53,10 @@ public class VehicleController {
     }
 
     @GetMapping("/")
+    @Operation(summary = "Get all vehicle", responses = {
+            @ApiResponse(responseCode = "200",
+                    content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ResponseEntity.class)))})
     public ResponseEntity<?> getAllVehicle() {
         log.info("Inside getVehicle of VehicleController");
         List<VehicleRequest> response = vehicleService.getAllVehicle();
@@ -48,6 +65,10 @@ public class VehicleController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a vehicle", responses = {
+            @ApiResponse(responseCode = "200",
+                    content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ResponseEntity.class)))})
     public ResponseEntity<?> deleteVehicle(@PathVariable("id") String vehicleId) {
         log.info("Inside getVehicle of VehicleController");
         VehicleResponse response = vehicleService.deleteVehicle(vehicleId);
@@ -56,6 +77,10 @@ public class VehicleController {
     }
 
     @GetMapping("/search/{numberPlate}")
+    @Operation(summary = "Search a vehicle by number plate", responses = {
+            @ApiResponse(responseCode = "200",
+                    content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ResponseEntity.class)))})
     public ResponseEntity<?> searchVehicle(@PathVariable("numberPlate") String numberPlate) {
         log.info("Inside getVehicle of VehicleController");
         VehicleRequest response = vehicleService.searchVehicle(numberPlate);
