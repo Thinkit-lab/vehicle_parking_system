@@ -40,14 +40,14 @@ jobs:
 #    - name: Enable debug logging
 #      run: echo "::set-env name=ACTIONS_STEP_DEBUG::true"
 
-#    - name: Report
-#      uses: dorny/test-reporter@v1
-#      if: always()
-#      with:
-#        name: Maven Tests
-#        path: target/surefire-reports/*.xml
-#        reporter: java-junit
-#        fail-on-error: true
+    - name: Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Maven Tests
+        path: target/surefire-reports/*.xml
+        reporter: java-junit
+        fail-on-error: true
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
