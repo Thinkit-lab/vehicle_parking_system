@@ -7,9 +7,4 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class VehicleParkingSystemApplicationTests {
 
-    @Test
-    @Disabled
-    void contextLoads() {
-    }
-
 }
