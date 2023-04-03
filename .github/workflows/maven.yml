@@ -37,8 +37,8 @@ jobs:
     - name: Test
       run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
 
-    - name: Enable debug logging
-      run: echo "::set-env name=ACTIONS_STEP_DEBUG::true"
+#    - name: Enable debug logging
+#      run: echo "::set-env name=ACTIONS_STEP_DEBUG::true"
 
     - name: Report
       uses: dorny/test-reporter@v1
