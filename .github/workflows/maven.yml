@@ -43,23 +43,24 @@ jobs:
         mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
     - name: Build with Maven
-      run: mvn --batch-mode -DskipTests package
-
-    - name: Test
-      run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+      run: mvn clean install
+#      run: mvn --batch-mode -DskipTests package
+#
+#    - name: Test
+#      run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
 
 #    - name: Enable debug logging
 #      run: echo "::set-env name=ACTIONS_STEP_DEBUG::true"
 
-    - name: Report
-      uses: dorny/test-reporter@v1
-      if: always()
-      with:
-        name: Maven Tests
-        path: target/surefire-reports/*.xml
-        reporter: java-junit
-        fail-on-error: true
+#    - name: Report
+#      uses: dorny/test-reporter@v1
+#      if: always()
+#      with:
+#        name: Maven Tests
+#        path: target/surefire-reports/*.xml
+#        reporter: java-junit
+#        fail-on-error: true
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    - name: Update dependency graph
-      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+#    - name: Update dependency graph
+#      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
